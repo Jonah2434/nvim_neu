@@ -6,8 +6,8 @@ M.themes = {
   ["tokyonight"] = { "tokyonight-day", "tokyonight-storm", "tokyonight-night", "tokyonight-moon" },
   ["nightfox"] = { "dawnfox", "dayfox", "nightfox", "nordfox", "carbonfox", "terafox" },
   ["kanagawa"] = { "kanagawa-lotus", "kanagawa-dragon", "kanagawa-wave" },
-  ["rose-pine"] = { "rose-pine-dawn", "rose-pine-main", "rose-pine-moon" },
-  ["gruvbox-material"] = { "gruvbox-material-soft", "gruvbox-material-medium", "gruvbox-material-hard" },
+  ["rose-pine"] = { "rose-pine-dawn", "rose-pine", "rose-pine-moon" },
+  ["gruvbox-material"] = { "gruvbox-material", "gruvbox-material", "gruvbox-material" },
 }
 
 M.default_theme = "catppuccin"
@@ -20,7 +20,14 @@ function M.setup(opts)
   M.default_style = opts.default_style or M.default_style
   M.light_theme = opts.light_theme or M.light_theme
   M.light_style = opts.light_style or M.light_style
-  M.themes = opts.themes or M.themes
+  
+  -- Ensure themes are properly formatted with correct prefixes
+  if opts.themes then
+    M.themes = opts.themes
+  end
+  
+  -- Setup initial colorscheme
+  vim.cmd("colorscheme " .. M.default_style)
 end
 
 function M.toggle_theme(is_light)
@@ -42,6 +49,7 @@ function M.toggle_theme(is_light)
           break
         end
       end
+      if found_theme then break end
     end
 
     if found_theme and found_style then
@@ -54,6 +62,10 @@ function M.toggle_theme(is_light)
     end
   end
 
+  -- Debug info (can be removed later)
+  print("Switching to theme: " .. style)
+  
+  -- Set the colorscheme
   vim.cmd("colorscheme " .. style)
 end
 

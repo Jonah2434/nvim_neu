@@ -58,7 +58,11 @@ return {
           },
         },
       })
-      vim.cmd.colorscheme "catppuccin-mocha" -- Explizit den Stil setzen
+      -- Set colorscheme but don't override user's choice if already set
+      local current = vim.g.colors_name
+      if not current then
+        vim.cmd.colorscheme "catppuccin-mocha"
+      end
     end,
   },
 
@@ -109,7 +113,8 @@ return {
     end,
   },
 
-  -- Statusline
+
+-- Statusline
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
