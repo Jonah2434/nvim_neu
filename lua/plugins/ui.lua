@@ -112,7 +112,105 @@ return {
       vim.g.gruvbox_material_foreground = "material"
     end,
   },
+  
+  -- NEUE THEMES HIER EINGEFÜGT
+  
+  -- Dracula Theme
+  {
+    "Mofiqul/dracula.nvim",
+    lazy = true,
+    config = function()
+      require("dracula").setup({
+        -- Optionale Konfiguration
+        colors = {
+          -- Du kannst hier Farben überschreiben
+        },
+        transparent_bg = false,
+        italic_comment = true,
+      })
+    end,
+  },
 
+  -- Nord Theme
+  {
+    "shaunsingh/nord.nvim",
+    lazy = true,
+    config = function()
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = true
+      vim.g.nord_disable_background = false
+      vim.g.nord_italic = true
+    end,
+  },
+
+  -- Onedark Theme
+  {
+    "navarasu/onedark.nvim",
+    lazy = true,
+    config = function()
+      require("onedark").setup({
+        style = "dark", -- Default, dark, darker, cool, deep, warm, warmer
+        transparent = false,
+      })
+    end,
+  },
+
+  -- Material Theme
+  {
+    "marko-cerovac/material.nvim",
+    lazy = true,
+    config = function()
+      vim.g.material_style = "deep ocean" -- oceanic, deep ocean, palenight, lighter, darker
+      require("material").setup({
+        contrast = {
+          terminal = false,
+          sidebars = false,
+          floating_windows = false,
+          cursor_line = false,
+          non_current_windows = false,
+        },
+      })
+    end,
+  },
+
+  -- Everforest Theme
+  {
+    "sainnhe/everforest",
+    lazy = true,
+    config = function()
+      vim.g.everforest_background = "medium" -- soft, medium, hard
+      vim.g.everforest_better_performance = 1
+    end,
+  },
+  
+  -- Solarized Theme
+  {
+    "maxmx03/solarized.nvim",
+    lazy = true,
+    config = function()
+      require("solarized").setup({
+        styles = {
+          comments = { italic = true },
+          functions = { bold = true },
+        },
+        transparent = false,
+      })
+    end,
+  },
+  
+  -- Monokai Pro Theme
+  {
+    "loctvl842/monokai-pro.nvim",
+    lazy = true,
+    config = function()
+      require("monokai-pro").setup({
+        filter = "pro", -- classic, octagon, pro, machine, ristretto, spectrum
+        background_clear = {}, -- list of filetypes where background should be cleared
+        transparent_background = false,
+        italic_comments = true,
+      })
+    end,
+  },
 
 -- Statusline
   {
